@@ -47,7 +47,7 @@ public class App {
             boolean hot = (feelsLike > 75);
             boolean morning = (hr < 12);
 
-            JFrame f = new JFrame("Playlist Maker"); //creating instance of JFrame
+            JFrame f = new JFrame("Sono"); //creating instance of JFrame
             JPanel p = new JPanel(); // creating panel for GUI
             // set up grid layout
             GridBagLayout layout = new GridBagLayout();
@@ -122,7 +122,6 @@ public class App {
             p.add(output,con);
 
             c.add(p, BorderLayout.CENTER);
-
             // TESTING PRINTING DATA
             // System.out.println(location);
             // System.out.println("Temp: " + temp + " F, Feels Like: " + feelsLike + " F");
@@ -161,12 +160,14 @@ public class App {
                             for (int i = 0; i < songs.size(); i++) {
                                 songsString += (i + 1) + ". "  + songs.get(i) + "\n";
                             }
+                            output.setText("");
                             output.setText(songsString);
                             input.setText("");
                         } catch (JSONException | IOException e1) {
                             e1.printStackTrace();
                         }
                     } else {
+                        output.setText("");
                         output.setText("Please enter a valid music artist.");
                         input.setText("");
                     }
@@ -184,9 +185,12 @@ public class App {
                         for (int i = 0; i < playlist.size(); i++) {
                             playlistString += playlist.get(i) + "\n";
                         }
+                        output.setText("");
                         output.setText(playlistString + "(" + (playlist.size()) + " songs)");
                         input.setText("");
+                        playlistString = "";
                     } else {
+                        output.setText("");
                         output.setText("Please enter a number from 1 - 10.");
                         input.setText("");
                     }
